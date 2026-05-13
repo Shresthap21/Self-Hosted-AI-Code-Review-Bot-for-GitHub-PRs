@@ -2,9 +2,8 @@
 
 A fully self-hosted AI-powered GitHub bot that automatically reviews pull requests using a local Large Language Model (LLM) via Ollama. It analyzes code changes, detects issues, and posts structured review comments directly on GitHub, without using any external AI APIs.
 
----
 
-# 🚀 Key Features
+## 🚀 Key Features
 
 - GitHub App + Webhook integration
 - Automatic pull request event handling
@@ -15,27 +14,8 @@ A fully self-hosted AI-powered GitHub bot that automatically reviews pull reques
 - Structured AI-generated code reviews
 - Fully self-hosted (no external AI APIs)
 
----
 
-# 🏗️ Architecture
-
-GitHub Pull Request
-↓
-GitHub Webhook (Node.js Server)
-↓
-PR Diff Extraction (GitHub REST API)
-↓
-File Filtering & Chunking Layer
-↓
-Local LLM (Ollama)
-↓
-AI Review Generator
-↓
-GitHub PR Comment API
-
----
-
-# ⚙️ How It Works
+## ⚙️ How It Works
 
 1. A pull request event triggers a GitHub webhook  
 2. The server receives PR metadata and fetches changed files  
@@ -45,9 +25,8 @@ GitHub PR Comment API
 6. AI generates structured review feedback  
 7. Final review is posted back as a PR comment  
 
----
 
-# 🧠 Local LLM (Ollama Setup)
+## 🧠 Local LLM (Ollama Setup)
 
 Install Ollama:
 
@@ -67,25 +46,23 @@ or
 ollama run deepseek-coder
 ```
 
----
 
-# 💻 CPU vs GPU Inference
+## 💻 CPU vs GPU Inference
 
-## 🧠 CPU Mode
+### 🧠 CPU Mode
 - Runs on normal machines
 - No GPU required
 - Slower inference speed
 - Suitable for small models
 
-## ⚡ GPU Mode
+### ⚡ GPU Mode
 - Uses CUDA acceleration
 - Faster response times
 - Recommended for large models
 - Better for production workloads
 
----
 
-# ☁️ VPS Deployment
+## ☁️ VPS Deployment
 
 This system can be deployed on low-cost VPS providers:
 
@@ -93,15 +70,14 @@ This system can be deployed on low-cost VPS providers:
 - AWS EC2
 - Railway / Render
 
-### Typical Production Setup:
+#### Typical Production Setup:
 - Node.js backend server
 - Ollama running locally on VPS
 - HTTPS reverse proxy (Nginx)
 - GitHub webhook exposed endpoint
 
----
 
-# 🔁 Event Flow
+## 🔁 Event Flow
 
 ```
 
@@ -116,10 +92,7 @@ GitHub PR Event
 
 ```
 
----
-
-
-# 🧰 Tech Stack
+## 🧰 Tech Stack
 
 - Node.js
 - Express.js
@@ -128,24 +101,21 @@ GitHub PR Event
 - Ollama (Local LLM)
 - JavaScript
 
----
 
-# 📌 Why This Project Matters
+## 📌 Why This Project Matters
 
 This project demonstrates how AI can be embedded directly into developer workflows using event-driven architecture and local LLMs, ensuring privacy, cost efficiency, and full control over data.
 
----
 
-# 🔐 Privacy Advantage
+## 🔐 Privacy Advantage
 
 Unlike cloud-based AI tools:
 - No code is sent to external APIs
 - Everything runs locally using Ollama
 - Fully self-hosted and secure
 
----
 
-# 🎯 Real-World Use Case
+## 🎯 Real-World Use Case
 
 This system acts like a lightweight version of:
 
@@ -153,9 +123,8 @@ This system acts like a lightweight version of:
 - CI/CD AI code reviewer
 - Internal engineering assistant
 
----
 
-# 🚀 Summary
+## 🚀 Summary
 
 This project demonstrates:
 - Event-driven system design
@@ -163,5 +132,3 @@ This project demonstrates:
 - Local AI inference
 - Real-time automation pipeline
 - Production-style architecture design
-
-```
