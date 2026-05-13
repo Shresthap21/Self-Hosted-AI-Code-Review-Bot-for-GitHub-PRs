@@ -1,0 +1,16 @@
+{
+  "name": "ai-code-review-bot",
+  "version": "1.0.0",
+  "description": "Self-hosted AI code review bot for GitHub PRs using Ollama",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node src/server.js"
+  },
+  "dependencies": {
+    "@octokit/auth-app": "^8.0.1",
+    "@octokit/rest": "^21.1.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
