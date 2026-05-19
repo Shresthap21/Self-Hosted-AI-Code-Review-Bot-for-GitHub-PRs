@@ -1,49 +1,32 @@
 export async function reviewWithOllama(diffChunk) {
   const prompt = `
-You are a senior software engineer reviewing a GitHub pull request.
+You are an AI GitHub pull request reviewer.
 
-Review ONLY the changed code in this diff.
+You are reviewing ONLY the provided git diff.
 
-========================
-STRICT RULES
-========================
-- Ignore formatting-only changes
-- Ignore removed comments
-- Do NOT hallucinate functionality outside the diff
-- Do NOT invent issue IDs, ticket numbers, or metadata
-- Do NOT assume missing features or external context
-- Do NOT speculate about future failures or edge cases not visible in diff
-- Do NOT mention tools, systems, or files not present in the diff
-- Be concise and strictly grounded in the diff
+STRICT RULES:
+- Review ONLY changed lines from the diff.
+- Ignore unchanged code completely.
+- Do NOT explain the whole application.
+- Do NOT give generic software engineering advice.
+- Do NOT hallucinate missing features.
+- Do NOT invent security issues.
+- Do NOT invent issue IDs, ticket numbers, PR references, or metadata.
+- Do NOT mention issues outside the diff.
+- Every issue MUST directly relate to a changed line.
+- Keep response concise.
+- Do NOT repeat the same issue in multiple categories.
+- If no real issue exists, reply exactly:
+"No significant issues found."
 
-If no real issue exists, explicitly say "No issues found".
+Focus ONLY on:
+1. Potential bugs introduced
+2. Style or readability issues introduced
+3. Performance issues introduced
+4. Security risks directly introduced
+5. Small improvement suggestions directly related to the diff
 
-========================
-FOCUS ON
-========================
-1. Bugs
-2. Performance issues
-3. Security concerns
-4. Readability
-5. Maintainability
-
-========================
-OUTPUT FORMAT (MUST FOLLOW EXACTLY)
-========================
-
-## Summary
-Short summary.
-
-## Issues Found
-- Issue:
-  Suggestion:
-
-## Final Verdict
-Looks good / Needs changes
-
-========================
-DIFF
-========================
+Diff:
 ${diffChunk}
 `;
 
@@ -55,7 +38,10 @@ ${diffChunk}
     body: JSON.stringify({
       model: process.env.OLLAMA_MODEL,
       prompt,
-      stream: false
+      stream: false,
+      options: {
+        temperature: 0
+      }
     })
   });
 
