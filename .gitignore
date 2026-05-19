@@ -1,4 +1,4 @@
 .env
 *.pem
 node_modules/
-.vscode
+.vscode/
