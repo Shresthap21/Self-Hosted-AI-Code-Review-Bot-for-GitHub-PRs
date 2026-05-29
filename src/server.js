@@ -25,7 +25,6 @@ app.post("/webhook", async (req, res) => {
     const event = req.headers["x-github-event"];
     const action = req.body.action;
 
-    console.log("====================================");
     console.log("GitHub webhook received");
     console.log("Event:", event);
     console.log("Action:", action);
@@ -59,6 +58,7 @@ app.post("/webhook", async (req, res) => {
     for (const file of files) {
       console.log("-----------------------------");
       console.log("File:", file.filename);
+      console.log("PATCH:", file.patch);
 
       if (!shouldReviewFile(file)) {
         console.log("Skipping file");
